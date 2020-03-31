@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="/js/axios.js"></script>
+</head>
+
+<body>
+  uploading test page
+  <form action="/imageUpload" method="post" enctype="multipart/form-data">
+    <label for="name">device-name : </label>
+    <input type="text" id="deviceName" name="deviceName">
+    <input type="file" name="img" />
+    <button>Upload</button>
+  </form>
+  <!-- <form action="https://visionai.skcc.com/frs/ondemand/image/start-image" api-key="a6fa770e-1b7f-42ff-940c-d52ac0efc21e"
+    method="post" enctype="multipart/form-data">
+    <label for="name">device-name : </label>
+    <input type="file" name="imageFile" />
+    <button>Upload</button>
+  </form> -->
+</body>
+
+</html>
+<script>
+  const sendData = () => {
+    const name = document.getElementById("name").value;
+    const path = document.getElementById("path").value;
+    const size = document.getElementById("size").value;
+
+    if (name && path && size) {
+      let data = {
+        name: name,
+        path: path,
+        size: size
+      };
+
+      axios
+        .post("/mqttPublish", data)
+        .then(res => {})
+        .catch(e => {
+          console.log(e);
+        });
+    } else {
+      console.log("input 값이 부족함");
+    }
+  };
+</script>
