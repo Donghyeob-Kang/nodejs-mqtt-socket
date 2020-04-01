@@ -23,8 +23,9 @@ client.on("message", (topic, message) => {
 
   // server connect
   const socket = net.connect({
+    // host: '1.234.51.99',
     port: 3000
-  });
+  })
 
   // connect success
   socket.on("connect", () => {
@@ -35,7 +36,6 @@ client.on("message", (topic, message) => {
   // server data print
   let buf = new Array();
   socket.on("data", data => {
-    // console.log(Object.prototype.toString.call(data));
     buf.push(data);
   });
 
@@ -53,10 +53,12 @@ client.on("message", (topic, message) => {
     });
     console.log("disconnected!");
   });
+
   // error
   socket.on("error", e => {
-    console.log("error : " + e);
+    console.log(e);
   });
+
   // connection timeout
   socket.on("timeout", () => {
     console.log("connection timeout");

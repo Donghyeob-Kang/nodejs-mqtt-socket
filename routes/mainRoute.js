@@ -16,11 +16,11 @@ router.post("/imageUpload", upload.single("img"), (req, res) => {
   let fSize = req.file.size;
   let fPath = req.file.path;
 
-  db.uploadImage(dName, fName, fSize, fPath, result => {
-    // 현재 db 저장만 진행, 차후 service 시 db에서 인증하는 절차 필요
-    imageSend.imageSend(fName);
-    publish.publisher(dName, fName, fSize);
-  });
+  // db.uploadImage(dName, fName, fSize, fPath, result => {
+  // 현재 db 저장만 진행, 차후 service 시 db에서 인증하는 절차 필요
+  imageSend.imageSend(fName);
+  publish.publisher(dName, fName, fSize);
+  // });
 
   res.redirect("/");
 });
