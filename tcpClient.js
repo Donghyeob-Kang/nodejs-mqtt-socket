@@ -23,7 +23,7 @@ client.on("message", (topic, message) => {
 
   // server connect
   const socket = net.connect({
-    // host: '1.234.51.99',
+    host: '1.234.51.99',
     port: 3000
   })
 

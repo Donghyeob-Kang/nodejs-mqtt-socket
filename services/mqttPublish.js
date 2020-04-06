@@ -10,11 +10,10 @@ client.on("connect", () => {
   console.log(`mqtt publish connected : ${client.connected}`);
 });
 
-module.exports.publisher = (dName, fName, fSize) => {
+module.exports.publisher = (fName, fSize) => {
   let data = {
-    dName: dName,
     fName: fName,
-    fSize: fSize
+    fSize: fSize,
   };
   let msg = JSON.stringify(data);
   console.log("publish message : " + `${msg}`);
