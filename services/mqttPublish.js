@@ -2,8 +2,8 @@ const mqtt = require("mqtt");
 require("dotenv").config();
 
 const client = mqtt.connect(process.env.MQTT_URL, {
-  username: process.env.MQTT_NAME,
-  password: process.env.MQTT_PASSWORD
+  // username: process.env.MQTT_NAME,
+  // password: process.env.MQTT_PASSWORD
 });
 
 client.on("connect", () => {
@@ -17,5 +17,5 @@ module.exports.publisher = (fName, fSize) => {
   };
   let msg = JSON.stringify(data);
   console.log("publish message : " + `${msg}`);
-  client.publish("/aqua/image", msg);
+  client.publish("/aqua/img", msg);
 };
